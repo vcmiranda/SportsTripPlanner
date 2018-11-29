@@ -1,4 +1,6 @@
 # SportsTripPlanner
+###
+System for mapping out when and where games are going to be played. Games can be filtered by team(s), and dates. All filtered games must be displayed as pins on a map.
 
 ## Project setup
 ```
