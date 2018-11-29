@@ -1,4 +1,7 @@
 module.exports = {
+  devServer: {
+    open: true,
+  },
   pluginOptions: {
     moment: {
       locales: [
@@ -7,4 +10,3 @@ module.exports = {
     },
   },
 };
-
