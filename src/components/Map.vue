@@ -1,19 +1,34 @@
 <template>
   <v-container fluid class="ma-0 pa-0">
-    <div class="gMap" ref="map" id="map"></div>
+    <v-layout class="gMap" ref="map" id="map"/>
+    <v-layout justify-center align-center fill-height>
+      <v-progress-circular
+        :size="70"
+        :width="7"
+        color="orange darken-1"
+        indeterminate
+        v-if="loading"
+      />
+    </v-layout>
+    <ClearFilters/>
   </v-container>
 </template>
 
 <script>
 import { mapState, mapGetters } from 'vuex';
+import ClearFilters from './dialogs/ClearFilters.vue';
 
 export default {
+  components: {
+    ClearFilters,
+  },
   data: () => ({
     map: null,
     markers: [],
   }),
   computed: {
     ...mapState([
+      'loading',
       'league',
       'mlb',
       'nba',
@@ -96,5 +111,6 @@ export default {
 .gMap {
   height: 100%;
   width: 100%;
+  position: absolute;
 }
 </style>

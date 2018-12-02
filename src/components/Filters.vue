@@ -2,6 +2,7 @@
   <v-navigation-drawer
     :value="drawer"
     clipped
+    stateless
     app
     dark
   >
@@ -103,10 +104,10 @@
         </v-menu>
       </v-flex>
       <v-flex xs12 class="px-3">
-        <v-btn block color="primary" @click="getSchedule()" :disabled="!leagueSelected">Show Map</v-btn>
+        <v-btn block color="orange darken-1" @click="getSchedule()" :disabled="!leagueSelected">Show Map</v-btn>
       </v-flex>
       <v-flex xs12 class="px-3">
-        <v-btn block color="primary" @click="clearData()" :disabled="!leagueSelected">Clear</v-btn>
+        <v-btn block color="orange darken-1" @click="setDialog(true)" :disabled="!leagueSelected">Clear</v-btn>
       </v-flex>
     </v-layout>
   </v-navigation-drawer>
@@ -135,6 +136,7 @@ export default {
     ...mapState([
       'drawer',
       'league',
+      'clear',
     ]),
     ...mapGetters([
       'teams',
@@ -150,7 +152,8 @@ export default {
     // Make mutations available in this component
     ...mapMutations([
       'setLeague',
-      'clearSchedule',
+      'setDialog',
+      'setClear',
     ]),
     // Set league to be used, both locally and globally
     setLeagueSelected(value) {
@@ -186,13 +189,6 @@ export default {
     saveDateEnd(date) {
       this.$refs.menuEnd.save(date);
     },
-    clearData() {
-      this.leagueSelected = null;
-      this.teamsSelected = null;
-      this.dateStartSelected = null;
-      this.dateEndSelected = null;
-      this.clearSchedule();
-    },
   },
   watch: {
     // Every time user chooses a league, it calls an action to load teams list
@@ -211,6 +207,16 @@ export default {
     // Starts date picker on Month
     menuEnd(value) {
       value && this.$nextTick(() => { this.$refs.picker.activePicker = 'MONTH'; });
+    },
+    // Clear local variables if clear is true
+    clear(value) {
+      if (value) {
+        this.leagueSelected = null;
+        this.teamsSelected = null;
+        this.dateStartSelected = null;
+        this.dateEndSelected = null;
+        this.setClear();
+      }
     },
   },
 };

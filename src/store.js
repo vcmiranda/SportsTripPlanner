@@ -27,6 +27,9 @@ export default new Vuex.Store({
     },
     league: null,
     drawer: true,
+    loading: false,
+    dialog: false,
+    clear: false,
   },
   getters: {
     teams: state => league => state[league].teams,
@@ -47,6 +50,15 @@ export default new Vuex.Store({
     },
     setDrawer(state) {
       state.drawer = !state.drawer;
+    },
+    setLoading(state, value) {
+      state.loading = value;
+    },
+    setDialog(state, value) {
+      state.dialog = value;
+    },
+    setClear(state) {
+      state.clear = !state.clear;
     },
   },
   actions: {
@@ -82,16 +94,19 @@ export default new Vuex.Store({
      * @returns {array} It sets state with filtered games.
      */
     getSchedule({ commit }, { league, teams, dates }) {
+      commit('setLoading', true);
       commit('clearSchedule');
       return leaguesAPI.getSchedule(league, teams, dates)
         .then(({ data: { games } }) => {
           const data = games.map(game => helperGeneral.getGameData(game.schedule, league));
-          commit('update', {
+          return commit('update', {
             league,
             property: 'schedule',
             data,
           });
-        });
+        })
+        .catch(err => err)
+        .finally(() => commit('setLoading', false));
     },
   },
 });
