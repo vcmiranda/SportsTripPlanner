@@ -169,7 +169,7 @@ export default {
       } else if (this.dateEndSelected) {
         dates = `until-${this.dateEndSelected.replace(/-/g, '')}`;
       }
-      this.$store.dispatch('getSchedule', { league: this.league, team: teams, dates })
+      this.$store.dispatch('getSchedule', { league: this.league, teams: teams, dates })
         .then(() => {
           this.teamsSelected = null;
           this.$emit('component', 'Map');
