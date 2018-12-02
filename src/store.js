@@ -47,7 +47,7 @@ export default new Vuex.Store({
     },
     setDrawer(state) {
       state.drawer = !state.drawer;
-    }
+    },
   },
   actions: {
     /**

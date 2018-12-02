@@ -176,7 +176,7 @@ export default {
       } else if (this.dateEndSelected) {
         dates = `until-${this.dateEndSelected.replace(/-/g, '')}`;
       }
-      this.$store.dispatch('getSchedule', { league: this.league, teams: teams, dates });
+      this.$store.dispatch('getSchedule', { league: this.league, teams, dates });
     },
     // It saves date to the correct element
     saveDateStart(date) {
