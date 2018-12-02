@@ -1,0 +1,1309 @@
+{
+  "nhl": [
+    {
+      "venue": "Honda Center",
+      "team": "Anaheim Ducks",
+      "abbreviation": "ANA",
+      "capacity": "17174",
+      "opened": "1993",
+      "address": "2695 Katella Avenue, Anaheim, California, 92806",
+      "location": "Anaheim, California",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "33.80742",
+        "longitude": "-117.87656"
+      }
+    },
+    {
+      "venue": "Gila River Arena",
+      "team": "Arizona Coyotes",
+      "abbreviation": "ARI",
+      "capacity": "17125",
+      "opened": "2003",
+      "address": "9400 West Maryland Avenue, Glendale, Arizona, 85305",
+      "location": "Glendale, Arizona",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "33.53024",
+        "longitude": "-112.26105"
+      }
+    },
+    {
+      "venue": "TD Garden",
+      "team": "Boston Bruins",
+      "abbreviation": "BOS",
+      "capacity": "17565",
+      "opened": "1995",
+      "address": "100 Legends Way, Boston, Massachusetts, 02114",
+      "location": "Boston, Massachusetts",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "42.36697",
+        "longitude": "-71.06199"
+      }
+    },
+    {
+      "venue": "KeyBank Center",
+      "team": "Buffalo Sabres",
+      "abbreviation": "BUF",
+      "capacity": "19070",
+      "opened": "1996",
+      "address": "1 Seymour H. Knox III Plaza, Buffalo, New York, 14203",
+      "location": "Buffalo, New York",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "42.875118",
+        "longitude": "-78.877831"
+      }
+    },
+    {
+      "venue": "Scotiabank Saddledome",
+      "team": "Calgary Flames",
+      "abbreviation": "CGY",
+      "capacity": "19289",
+      "opened": "1983",
+      "address": "555 Saddledome Rise SE, Calgary, Alberta, T2P 3B9",
+      "location": "Calgary, Alberta",
+      "country": "Canada",
+      "coordinates": {
+        "latitude": "51.03764",
+        "longitude": "-114.05211"
+      }
+    },
+    {
+      "venue": "PNC Arena",
+      "team": "Carolina Hurricanes",
+      "abbreviation": "CAR",
+      "capacity": "18680",
+      "opened": "1999",
+      "address": "1400 Edwards Mill Rd, Raleigh, North Carolina, 27607",
+      "location": "Raleigh, North Carolina",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "35.80421",
+        "longitude": "-78.72649"
+      }
+    },
+    {
+      "venue": "United Center",
+      "team": "Chicago Blackhawks",
+      "abbreviation": "CHI",
+      "capacity": "19717",
+      "opened": "1994",
+      "address": "1901 W. Madison St., Chicago, Illinois, 60612",
+      "location": "Chicago, Illinois",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "41.88065",
+        "longitude": "-87.67514"
+      }
+    },
+    {
+      "venue": "Pepsi Center",
+      "team": "Colorado Avalanche",
+      "abbreviation": "COL",
+      "capacity": "18007",
+      "opened": "1999",
+      "address": "1000, Chopper Circle, Denver, Colorado, 80204",
+      "location": "Denver, Colorado",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "39.74792",
+        "longitude": "-105.0068"
+      }
+    },
+    {
+      "venue": "Nationwide Arena",
+      "team": "Columbus Blue Jackets",
+      "abbreviation": "CBJ",
+      "capacity": "18144",
+      "opened": "2000",
+      "address": "200 W. Nationwide Boulevard, Columbus, Ohio, 43215",
+      "location": "Columbus, Ohio",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "39.96875",
+        "longitude": "-83.00461"
+      }
+    },
+    {
+      "venue": "American Airlines Center",
+      "team": "Dallas Stars",
+      "abbreviation": "DAL",
+      "capacity": "18532",
+      "opened": "2001",
+      "address": "2500 Victory Avenue, Dallas, Texas, 75201",
+      "location": "Dallas, Texas",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "32.7903",
+        "longitude": "-96.8102"
+      }
+    },
+    {
+      "venue": "Joe Louis Arena",
+      "team": "Detroit Red Wings",
+      "abbreviation": "DET",
+      "capacity": "20027",
+      "opened": "1979",
+      "address": "2645 Woodward Ave., Detroit, Michigan, 48201",
+      "location": "Detroit, Michigan",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "42.34113",
+        "longitude": "-83.05524"
+      }
+    },
+    {
+      "venue": "Rogers Place",
+      "team": "Edmonton Oilers",
+      "abbreviation": "EDM",
+      "capacity": "18641",
+      "opened": "2016",
+      "address": "10220 104 Avenue NW, Edmonton, Alberta, T5J 0H6",
+      "location": "Edmonton, Alberta",
+      "country": "Canada",
+      "coordinates": {
+        "latitude": "53.54656",
+        "longitude": "-113.49653"
+      }
+    },
+    {
+      "venue": "BB&T Center",
+      "team": "Florida Panthers",
+      "abbreviation": "FLO",
+      "capacity": "19250",
+      "opened": "1998",
+      "address": "1 Panther Pkwy, Sunrise, Florida, 33323",
+      "location": "Sunrise, Florida",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "26.15537",
+        "longitude": "-80.33023"
+      }
+    },
+    {
+      "venue": "Staples Center",
+      "team": "Los Angeles Kings",
+      "abbreviation": "LAK",
+      "capacity": "18230",
+      "opened": "1999",
+      "address": "1111 S. Figueroa Street, Los Angeles, California, 90015",
+      "location": "Los Angeles, California",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "34.043018",
+        "longitude": "-118.267258"
+      }
+    },
+    {
+      "venue": "Xcel Energy Center",
+      "team": "Minnesota Wild",
+      "abbreviation": "MIN",
+      "capacity": "17954",
+      "opened": "2000",
+      "address": "199 W. Kellogg Blvd. St. Paul, Minnesota, 55102",
+      "location": "Saint Paul, Minnesota",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "44.944851",
+        "longitude": "-93.100777"
+      }
+    },
+    {
+      "venue": "Bell Centre",
+      "team": "Montreal Canadiens",
+      "abbreviation": "MTL",
+      "capacity": "21288",
+      "opened": "1996",
+      "address": "1909 Avenue des Canadiens-de-Montreal, Montreal, Quebec, H3B 5E8",
+      "location": "Montreal, Quebec",
+      "country": "Canada",
+      "coordinates": {
+        "latitude": "45.496769",
+        "longitude": "-73.569832"
+      }
+    },
+    {
+      "venue": "Bridgestone Arena",
+      "team": "Nashville Predators",
+      "abbreviation": "NSH",
+      "capacity": "17113",
+      "opened": "1996",
+      "address": "501 Broadway, Nashville, Tennessee, 37203",
+      "location": "Nashville, Tennessee",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "36.16054",
+        "longitude": "-86.77875"
+      }
+    },
+    {
+      "venue": "Prudential Center",
+      "team": "New Jersey Devils",
+      "abbreviation": "NJD",
+      "capacity": "17625",
+      "opened": "2007",
+      "address": "25 Lafayette St., Newark, New Jersey, 07102",
+      "location": "Newark, New Jersey",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "40.732239",
+        "longitude": "-74.170639"
+      }
+    },
+    {
+      "venue": "Barclays Center",
+      "team": "New York Islanders",
+      "abbreviation": "NYI",
+      "capacity": "15795",
+      "opened": "2012",
+      "address": "620 Atlantic Avenue, Brooklyn, New York 11217",
+      "location": "Brooklyn, New York",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "40.683071",
+        "longitude": "-73.976044"
+      }
+    },
+    {
+      "venue": "Madison Square Garden",
+      "team": "New York Rangers",
+      "abbreviation": "NYR",
+      "capacity": "18006",
+      "opened": "1968",
+      "address": "4 Pennsylvania Plaza, New York, New York 10001",
+      "location": "New York City, New York",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "40.74987",
+        "longitude": "-73.99199"
+      }
+    },
+    {
+      "venue": "Canadian Tire Centre",
+      "team": "Ottawa Senators",
+      "abbreviation": "OTT",
+      "capacity": "19153",
+      "opened": "1996",
+      "address": "1000 Palladium Drive, Kanata, Ontario, K2V 1A5",
+      "location": "Ottawa, Ontario",
+      "country": "Canada",
+      "coordinates": {
+        "latitude": "45.29668",
+        "longitude": "-75.927193"
+      }
+    },
+    {
+      "venue": "Wells Fargo Center",
+      "team": "Philadelphia Flyers",
+      "abbreviation": "PHI",
+      "capacity": "19543",
+      "opened": "1996",
+      "address": "3601 S Broad St, Philadelphia, Pennsylvania, 19148",
+      "location": "Philadelphia, Pennsylvania",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "39.905399",
+        "longitude": "-75.173592"
+      }
+    },
+    {
+      "venue": "PPG Paints Arena",
+      "team": "Pittsburgh Penguins",
+      "abbreviation": "PIT",
+      "capacity": "18387",
+      "opened": "2010",
+      "address": "1001 Fifth Ave, Pittsburgh, Pennsylvania, 15219",
+      "location": "Pittsburgh, Pennsylvania",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "40.43906",
+        "longitude": "-79.99024"
+      }
+    },
+    {
+      "venue": "SAP Center",
+      "team": "San Jose Sharks",
+      "abbreviation": "SJS",
+      "capacity": "17562",
+      "opened": "1993",
+      "address": "525 West Santa Clara Street, San Jose, California, 95113",
+      "location": "San Jose, California",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "37.332768",
+        "longitude": "-121.901266"
+      }
+    },
+    {
+      "venue": "Scottrade Center",
+      "team": "St. Louis Blues",
+      "abbreviation": "STL",
+      "capacity": "19150",
+      "opened": "1994",
+      "address": "1401 Clark, St. Louis, Missouri. 63103",
+      "location": "St. Louis, Missouri",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "38.62638",
+        "longitude": "-90.20258"
+      }
+    },
+    {
+      "venue": "Amalie Arena",
+      "team": "Tampa Bay Lightning",
+      "abbreviation": "TBL",
+      "capacity": "19092",
+      "opened": "1996",
+      "address": "401 Channelside Drive, Tampa, Florida, 33602",
+      "location": "Tampa, Florida",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "27.94272",
+        "longitude": "-82.4518"
+      }
+    },
+    {
+      "venue": "Air Canada Centre",
+      "team": "Toronto Maple Leafs",
+      "abbreviation": "TOR",
+      "capacity": "18819",
+      "opened": "1999",
+      "address": "40 Bay St., Toronto, Ontario, M5J 2X2",
+      "location": "Toronto, Ontario",
+      "country": "Canada",
+      "coordinates": {
+        "latitude": "43.64337",
+        "longitude": "-79.37802"
+      }
+    },
+    {
+      "venue": "Rogers Arena",
+      "team": "Vancouver Canucks",
+      "abbreviation": "VAN",
+      "capacity": "18910",
+      "opened": "1995",
+      "address": "800 Griffiths Way, Vancouver, British Columbia, V6B 6G1",
+      "location": "Vancouver, British Columbia",
+      "country": "Canada",
+      "coordinates": {
+        "latitude": "49.27726",
+        "longitude": "-123.10958"
+      }
+    },
+    {
+      "venue": "T-Mobile Arena",
+      "team": "Vegas Golden Knights",
+      "abbreviation": "VGK",
+      "capacity": "17500",
+      "opened": "2016",
+      "address": "3780 South Las Vegas Boulevard, Nevada, 89158",
+      "location": "Las Vegas, Nevada",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "36.102852",
+        "longitude": "-115.178162"
+      }
+    },
+    {
+      "venue": "Verizon Center",
+      "team": "Washington Capitals",
+      "abbreviation": "WSH",
+      "capacity": "18506",
+      "opened": "1997",
+      "address": "601 F St NW, Washington, DC 20004",
+      "location": "Washington, D.C.",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "38.89732",
+        "longitude": "-77.02165"
+      }
+    },
+    {
+      "venue": "MTS Centre",
+      "team": "Winnipeg Jets",
+      "abbreviation": "WPJ",
+      "capacity": "15294",
+      "opened": "2004",
+      "address": "300 Portage Avenue, Winnipeg, Manitoba R3C 5S4",
+      "location": "Winnipeg, Manitoba",
+      "country": "Canada",
+      "coordinates": {
+        "latitude": "49.89308",
+        "longitude": "-97.14375"
+      }
+    }
+  ],
+  "nfl": [
+    {
+      "venue": "State Farm Stadium",
+      "team": "Arizona Cardinals",
+      "abbreviation": "ARI",
+      "capacity": "63400",
+      "opened": "2006",
+      "address": "1 Cardinals Drive , Glendale, AR 85305",
+      "location": "Glendale, Arizona",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "33.52724",
+        "longitude": "-112.26223"
+      }
+    },
+    {
+      "venue": "Mercedes-Benz Stadium",
+      "team": "Atlanta Falcons",
+      "abbreviation": "ATL",
+      "capacity": "71000",
+      "opened": "2017",
+      "address": "1 AMB Drive Northwest, Atlanta, GA 30313",
+      "location": "Atlanta, Georgia",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "33.754589",
+        "longitude": "-84.401779"
+      }
+    },
+    {
+      "venue": "M&T Bank Stadium",
+      "team": "Baltimore Ravens",
+      "abbreviation": "BAL",
+      "capacity": "71008",
+      "opened": "1998",
+      "address": "1101 Russell St, Baltimore, MD 21230",
+      "location": "Baltimore, Maryland",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "39.277363",
+        "longitude": "-76.623024"
+      }
+    },
+    {
+      "venue": "New Era Field",
+      "team": "Buffalo Bills",
+      "abbreviation": "BUF",
+      "capacity": "71608",
+      "opened": "1973",
+      "address": "1 Bills Dr, Orchard Park, NY 14127",
+      "location": "Orchard Park, New York",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "42.7714",
+        "longitude": "-78.789253"
+      }
+    },
+    {
+      "venue": "Bank of America Stadium",
+      "team": "Carolina Panthers",
+      "abbreviation": "CAR",
+      "capacity": "75419",
+      "opened": "1996",
+      "address": "800 S Mint St, Charlotte, NC 28202",
+      "location": "Charlotte, North Carolina",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "35.22488",
+        "longitude": "-80.851921"
+      }
+    },
+    {
+      "venue": "Soldier Field",
+      "team": "Chicago Bears",
+      "abbreviation": "CHI",
+      "capacity": "61500",
+      "opened": "1924",
+      "address": "1410 Museum Campus Dr, Chicago, IL 60605",
+      "location": "Chicago, Illinois",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "41.863441",
+        "longitude": "-87.614853"
+      }
+    },
+    {
+      "venue": "Paul Brown Stadium",
+      "team": "Cincinnati Bengals",
+      "abbreviation": "CIN",
+      "capacity": "65515",
+      "opened": "2000",
+      "address": "1 Paul Brown Stadium, Cincinnati, OH 45202",
+      "location": "Cincinnati, Ohio",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "40.79356",
+        "longitude": "-81.500427"
+      }
+    },
+    {
+      "venue": "FirstEnergy Stadium",
+      "team": "Cleveland Browns",
+      "abbreviation": "CLE",
+      "capacity": "67431",
+      "opened": "1999",
+      "address": "100 Alfred Lerner Way, Cleveland, OH 44114",
+      "location": "Cleveland, Ohio",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "41.50609",
+        "longitude": "-81.6974"
+      }
+    },
+    {
+      "venue": "AT&T Stadium",
+      "team": "Dallas Cowboys",
+      "abbreviation": "DAL",
+      "capacity": "80000",
+      "opened": "2009",
+      "address": "1 AT&T Way, Arlington, TX 76011",
+      "location": "Arlington, Texas",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "32.746941",
+        "longitude": "-97.0924"
+      }
+    },
+    {
+      "venue": "Sports Authority Field at Mile High",
+      "team": "Denver Broncos",
+      "abbreviation": "DEN",
+      "capacity": "76125",
+      "opened": "2001",
+      "address": "1701 Bryant St, Denver, CO 80204",
+      "location": "Denver, Colorado",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "39.72203",
+        "longitude": "-105.01867"
+      }
+    },
+    {
+      "venue": "Ford Field",
+      "team": "Detroit Lions",
+      "abbreviation": "DET",
+      "capacity": "65000",
+      "opened": "2002",
+      "address": "2000 Brush St, Detroit, MI 48226",
+      "location": "Detroit, Michigan",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "42.335869",
+        "longitude": "-83.044708"
+      }
+    },
+    {
+      "venue": "Lambeau Field",
+      "team": "Green Bay Packers",
+      "abbreviation": "GB",
+      "capacity": "81435",
+      "opened": "1957",
+      "address": "1265 Lombardi Ave, Green Bay, WI 54304",
+      "location": "Green Bay, Wisconsin",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "44.50183",
+        "longitude": "-88.06042"
+      }
+    },
+    {
+      "venue": "NRG Stadium",
+      "team": "Houston Texans",
+      "abbreviation": "HOU",
+      "capacity": "72220",
+      "opened": "2002",
+      "address": "NRG Pkwy, Houston, TX 77054",
+      "location": "Houston, Texas",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "29.68329",
+        "longitude": "-95.40786"
+      }
+    },
+    {
+      "venue": "Lucas Oil Stadium",
+      "team": "Indianapolis Colts",
+      "abbreviation": "IND",
+      "capacity": "67000",
+      "opened": "2008",
+      "address": "500 S Capitol Ave, Indianapolis, IN 46225",
+      "location": "Indianapolis, Indiana",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "39.75972",
+        "longitude": "-86.16357"
+      }
+    },
+    {
+      "venue": "EverBank Field",
+      "team": "Jacksonville Jaguars",
+      "abbreviation": "JAX",
+      "capacity": "67246",
+      "opened": "1995",
+      "address": "1 TIAA Bank Field Dr, Jacksonville, FL 32202",
+      "location": "Jacksonville, Florida",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "30.32214",
+        "longitude": "-81.63796"
+      }
+    },
+    {
+      "venue": "Arrowhead Stadium",
+      "team": "Kansas City Chiefs",
+      "abbreviation": "KC",
+      "capacity": "76416",
+      "opened": "1972",
+      "address": "1 Arrowhead Dr, Kansas City, MO 64129",
+      "location": "Kansas City, Missouri",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "39.0517",
+        "longitude": "-94.49242"
+      }
+    },
+    {
+      "venue": "StubHub Center",
+      "team": "Los Angeles Chargers",
+      "abbreviation": "LAC",
+      "capacity": "27000",
+      "opened": "2003",
+      "address": "18400 S Avalon Blvd, Carson, CA 90746",
+      "location": "Los Angeles, California",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "33.86298",
+        "longitude": "-118.266006"
+      }
+    },
+    {
+      "venue": "Los Angeles Memorial Coliseum",
+      "team": "Los Angeles Rams",
+      "abbreviation": "LA",
+      "capacity": "93607",
+      "opened": "1923",
+      "address": "3911 S Figueroa St, Los Angeles, CA 90037",
+      "location": "Los Angeles, California",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "34.014011",
+        "longitude": "-118.283279"
+      }
+    },
+    {
+      "venue": "Hard Rock Stadium",
+      "team": "Miami Dolphins",
+      "abbreviation": "MIA",
+      "capacity": "65326",
+      "opened": "1987",
+      "address": "347 Don Shula Dr, Miami Gardens, FL 33056",
+      "location": "Miami Gardens, Florida",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "25.957411",
+        "longitude": "-80.233841"
+      }
+    },
+    {
+      "venue": "U.S. Bank Stadium",
+      "team": "Minnesota Vikings",
+      "abbreviation": "MIN",
+      "capacity": "66655",
+      "opened": "2016",
+      "address": "401 Chicago Ave, Minneapolis, MN 55415",
+      "location": "Minneapolis, Minnesota",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "44.973011",
+        "longitude": "-93.256493"
+      }
+    },
+    {
+      "venue": "Gillette Stadium",
+      "team": "New England Patriots",
+      "abbreviation": "NE",
+      "capacity": "66829",
+      "opened": "2002",
+      "address": "1 Patriot Pl, Foxborough, MA 02035",
+      "location": "Foxborough, Massachusetts",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "42.093811",
+        "longitude": "-71.2658"
+      }
+    },
+    {
+      "venue": "Mercedes-Benz Superdome",
+      "team": "New Orleans Saints",
+      "abbreviation": "NO",
+      "capacity": "73000",
+      "opened": "1975",
+      "address": "1500 Sugar Bowl Dr, New Orleans, LA 70112",
+      "location": "New Orleans, Louisiana",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "29.951521",
+        "longitude": "-90.078453"
+      }
+    },
+    {
+      "venue": "MetLife Stadium",
+      "team": "New York Giants",
+      "abbreviation": "NYG",
+      "capacity": "82500",
+      "opened": "2010",
+      "address": "1 MetLife Stadium Dr, East Rutherford, NJ 07073",
+      "location": "East Rutherford, New Jersey",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "40.813831",
+        "longitude": "-74.079193"
+      }
+    },
+    {
+      "venue": "MetLife Stadium",
+      "team": "New York Jets",
+      "abbreviation": "NYJ",
+      "capacity": "82500",
+      "opened": "2010",
+      "address": "1 MetLife Stadium Dr, East Rutherford, NJ 07073",
+      "location": "East Rutherford, New Jersey",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "40.813831",
+        "longitude": "-74.079193"
+      }
+    },
+    {
+      "venue": "Oakland Alameda Coliseum",
+      "team": "Oakland Raiders",
+      "abbreviation": "OAK",
+      "capacity": "56063",
+      "opened": "1966",
+      "address": "7000 Coliseum Way, Oakland, CA 94621",
+      "location": "Oakland, California",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "37.750809",
+        "longitude": "-122.203392"
+      }
+    },
+    {
+      "venue": "Lincoln Financial Field",
+      "team": "Philadelphia Eagles",
+      "abbreviation": "PHI",
+      "capacity": "69596",
+      "opened": "2003",
+      "address": "1 Lincoln Financial Field Way, Philadelphia, PA 19148",
+      "location": "Philadelphia, Pennsylvania",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "39.901699",
+        "longitude": "-75.167633"
+      }
+    },
+    {
+      "venue": "Heinz Field",
+      "team": "Pittsburgh Steelers",
+      "abbreviation": "PIT",
+      "capacity": "68400",
+      "opened": "2001",
+      "address": "100 Art Rooney Ave, Pittsburgh, PA 15212",
+      "location": "Pittsburgh, Pennsylvania",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "40.44529",
+        "longitude": "-80.013618"
+      }
+    },
+    {
+      "venue": "Levi's Stadium",
+      "team": "San Francisco 49ers",
+      "abbreviation": "SF",
+      "capacity": "68500",
+      "opened": "2014",
+      "address": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054",
+      "location": "Santa Clara, California",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "37.403309",
+        "longitude": "-121.970032"
+      }
+    },
+    {
+      "venue": "CenturyLink Field",
+      "team": "Seattle Seahawks",
+      "abbreviation": "SEA",
+      "capacity": "68000",
+      "opened": "2002",
+      "address": "800 Occidental Ave S, Seattle, WA 98134",
+      "location": "Seattle, Washington",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "47.594971",
+        "longitude": "-122.33152"
+      }
+    },
+    {
+      "venue": "Raymond James Stadium",
+      "team": "Tampa Bay Buccaneers",
+      "abbreviation": "TB",
+      "capacity": "65890",
+      "opened": "1998",
+      "address": "4201 N Dale Mabry Hwy, Tampa, FL 33607",
+      "location": "Tampa, Florida",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "27.97986",
+        "longitude": "-82.50531"
+      }
+    },
+    {
+      "venue": "Nissan Stadium",
+      "team": "Tennessee Titans",
+      "abbreviation": "TEN",
+      "capacity": "69143",
+      "opened": "1999",
+      "address": "1 Titans Way, Nashville, TN 37213",
+      "location": "Nashville, Tennessee",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "36.165279",
+        "longitude": "-86.7733"
+      }
+    },
+    {
+      "venue": "FedExField",
+      "team": "Washington Redskins",
+      "abbreviation": "WAS",
+      "capacity": "82000",
+      "opened": "1997",
+      "address": "1600 Fedex Way, Landover, MD 20785",
+      "location": "Landover, Maryland",
+      "latitude": "38.90773",
+      "coordinates": {
+        "longitude": "-76.864433"
+    }
+  }
+],
+  "nba": [
+    {
+      "venue": "State Farm Arena",
+      "team": "Atlanta Hawks",
+      "abbreviation": "ATL",
+      "capacity": "18118",
+      "opened": "1999",
+      "address": "1 Philips Drive, Atlanta, Georgia, 30303",
+      "location": "Atlanta, Georgia",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "33.757159",
+        "longitude": "-84.397323"
+      }
+    },
+    {
+      "venue": "TD Garden",
+      "team": "Boston Celtics",
+      "abbreviation": "BOS",
+      "capacity": "18624",
+      "opened": "1995",
+      "address": "100 Legends Way, Boston, Massachusetts, 02114",
+      "location": "Boston, Massachusetts",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "42.366623",
+        "longitude": "-71.061551"
+      }
+    },
+    {
+      "venue": "Barclays Center",
+      "team": "Brooklyn Nets",
+      "abbreviation": "BRO",
+      "capacity": "17732",
+      "opened": "2012",
+      "address": "620 Atlantic Avenue, New York City, New York, 11217",
+      "location": "Brooklyn, New York",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "40.683071",
+        "longitude": "-73.976044"
+      }
+    },
+    {
+      "venue": "Spectrum Center",
+      "team": "Charlotte Hornets",
+      "abbreviation": "CHA",
+      "capacity": "19077",
+      "opened": "2005",
+      "address": "333 East Trade Street, Charlotte, North Carolina, 28202",
+      "location": "Charlotte, North Carolina",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "35.225282",
+        "longitude": "-80.840764"
+      }
+    },
+    {
+      "venue": "United Center",
+      "team": "Chicago Bulls",
+      "abbreviation": "CHI",
+      "capacity": "20917",
+      "opened": "1994",
+      "address": "1901 West Madison Street, Chicago, Illinois, 60612",
+      "location": "Chicago, Illinois",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "41.881339",
+        "longitude": "-87.676422"
+      }
+    },
+    {
+      "venue": "Quicken Loans Arena",
+      "team": "Cleveland Cavaliers",
+      "abbreviation": "CLE",
+      "capacity": "20562",
+      "opened": "1994",
+      "address": "1 Center Court, Cleveland, Ohio 44115",
+      "location": "Cleveland, Ohio",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "41.496873",
+        "longitude": "-81.689694"
+      }
+    },
+    {
+      "venue": "American Airlines Center",
+      "team": "Dallas Mavericks",
+      "abbreviation": "DAL",
+      "capacity": "19200",
+      "opened": "2001",
+      "address": "2500 Victory Avenue, Dallas, Texas 75219",
+      "location": "Dallas, Texas",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "32.79008",
+        "longitude": "-96.811316"
+      }
+    },
+    {
+      "venue": "Pepsi Center",
+      "team": "Denver Nuggets",
+      "abbreviation": "DEN",
+      "capacity": "19155",
+      "opened": "1999",
+      "address": "1000 Chopper Circle, Denver, Colorado 80204",
+      "location": "Denver, Colorado",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "39.747871",
+        "longitude": "-105.006912"
+      }
+    },
+    {
+      "venue": "Little Caesars Arena",
+      "team": "Detroit Pistons",
+      "abbreviation": "DET",
+      "capacity": "20491",
+      "opened": "2017",
+      "address": "2645 Woodward Avenue, Detroit, Michigan 48201",
+      "location": "Auburn Hills, Michigan",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "42.697056",
+        "longitude": "-83.242387"
+      }
+    },
+    {
+      "venue": "Oracle Arena",
+      "team": "Golden State Warriors",
+      "abbreviation": "GSW",
+      "capacity": "19596",
+      "opened": "1966",
+      "address": "7000 Coliseum Way, Oakland, California 94621",
+      "location": "Oakland, California",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "37.754734",
+        "longitude": "-122.204926"
+      }
+    },
+    {
+      "venue": "Toyota Center",
+      "team": "Houston Rockets",
+      "abbreviation": "HOU",
+      "capacity": "18055",
+      "opened": "2003",
+      "address": "1510 Polk Street, Houston, Texas 77002",
+      "location": "Houston, Texas",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "29.751634",
+        "longitude": "-95.361581"
+      }
+    },
+    {
+      "venue": "Bankers Life Fieldhouse",
+      "team": "Indiana Pacers",
+      "abbreviation": "IND",
+      "capacity": "18165",
+      "opened": "1999",
+      "address": "125 South Pennsylvania Street, Indianapolis, Indiana 46204",
+      "location": "Indianapolis, Indiana",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "39.76484",
+        "longitude": "-86.156372"
+      }
+    },
+    {
+      "venue": "Staples Center",
+      "team": "Los Angeles Clippers",
+      "abbreviation": "LAC",
+      "capacity": "19067",
+      "opened": "1999",
+      "address": "1111 South Figueroa Street, Los Angeles, California 90015",
+      "location": "Los Angeles, California",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "34.043018",
+        "longitude": "-118.267258"
+      }
+    },
+    {
+      "venue": "Staples Center",
+      "team": "Los Angeles Lakers",
+      "abbreviation": "LAL",
+      "capacity": "19067",
+      "opened": "1999",
+      "address": "1111 South Figueroa Street, Los Angeles, California 90015",
+      "location": "Los Angeles, California",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "34.043018",
+        "longitude": "-118.267258"
+      }
+    },
+    {
+      "venue": "FedExForum",
+      "team": "Memphis Grizzlies",
+      "abbreviation": "MEM",
+      "capacity": "18119",
+      "opened": "2004",
+      "address": "191 Beale Street, Memphis, Tennessee 38103",
+      "location": "Memphis, Tennessee",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "35.139532",
+        "longitude": "-90.051825"
+      }
+    },
+    {
+      "venue": "American Airlines Arena",
+      "team": "Miami Heat",
+      "abbreviation": "MIA",
+      "capacity": "19600",
+      "opened": "1999",
+      "address": "601 Biscayne Boulevard, Miami, Florida 33132",
+      "location": "Miami, Florida",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "25.781026",
+        "longitude": "-80.189216"
+      }
+    },
+    {
+      "venue": "Fiserv Forum",
+      "team": "Milwaukee Bucks",
+      "abbreviation": "MIL",
+      "capacity": "17500",
+      "opened": "2018",
+      "address": "1111 Vel R. Phillips Avenue, Milwaukee, Wisconsin 53203",
+      "location": "Milwaukee, Wisconsin",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "43.043685",
+        "longitude": "-87.916074"
+      }
+    },
+    {
+      "venue": "Target Center",
+      "team": "Minnesota Timberwolves",
+      "abbreviation": "MIN",
+      "capacity": "19356",
+      "opened": "1990",
+      "address": "600 North First Avenue, Minneapolis, Minnesota 55403",
+      "location": "Minneapolis, Minnesota",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "44.979296",
+        "longitude": "-93.275243"
+      }
+    },
+    {
+      "venue": "Smoothie King Center",
+      "team": "New Orleans Pelicans",
+      "abbreviation": "NOP",
+      "capacity": "16867",
+      "opened": "1999",
+      "address": "501 Dave Dixon Drive, New Orleans, Louisiana 70113",
+      "location": "New Orleans, Louisiana",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "29.948918",
+        "longitude": "-90.078817"
+      }
+    },
+    {
+      "venue": "Madison Square Garden",
+      "team": "New York Knicks",
+      "abbreviation": "NYK",
+      "capacity": "19812",
+      "opened": "1968",
+      "address": "4 Pennsylvania Plaza, New York City, New York 10001",
+      "location": "New York, New York",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "40.74987",
+        "longitude": "-73.99199"
+      }
+    },
+    {
+      "venue": "Chesapeake Energy Arena",
+      "team": "Oklahoma City Thunder",
+      "abbreviation": "OKL",
+      "capacity": "18203",
+      "opened": "2002",
+      "address": "100 West Reno Avenue, Oklahoma City, Oklahoma 73102",
+      "location": "Oklahoma City, Oklahoma",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "35.464289",
+        "longitude": "-97.514595"
+      }
+    },
+    {
+      "venue": "Amway Center",
+      "team": "Orlando Magic",
+      "abbreviation": "ORL",
+      "capacity": "18846",
+      "opened": "2010",
+      "address": "400 West Church Street, Orlando, Florida 32801",
+      "location": "Orlando, Florida",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "28.540205",
+        "longitude": "-81.382921"
+      }
+    },
+    {
+      "venue": "Wells Fargo Center",
+      "team": "Philadelphia 76ers",
+      "abbreviation": "PHI",
+      "capacity": "20478",
+      "opened": "1996",
+      "address": "3601 South Broad Street, Philadelphia, Pennsylvania 19148",
+      "location": "Philadelphia, Pennsylvania",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "39.905399",
+        "longitude": "-75.173592"
+      }
+    },
+    {
+      "venue": "Talking Stick Resort Arena",
+      "team": "Phoenix Suns",
+      "abbreviation": "PHX",
+      "capacity": "18055",
+      "opened": "1992",
+      "address": "201 East Jefferson Street, Phoenix, Arizona 85004",
+      "location": "Phoenix, Arizona",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "33.446818",
+        "longitude": "-112.071231"
+      }
+    },
+    {
+      "venue": "Moda Center",
+      "team": "Portland Trail Blazers",
+      "abbreviation": "POR",
+      "capacity": "19441",
+      "opened": "1995",
+      "address": "1 Center Court, Portland, Oregon 97227",
+      "location": "Portland, Oregon",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "45.531168",
+        "longitude": "-122.667757"
+      }
+    },
+    {
+      "venue": "Golden 1 Center",
+      "team": "Sacramento Kings",
+      "abbreviation": "SAC",
+      "capacity": "17500",
+      "opened": "2016",
+      "address": "500 David J. Stern Walk, Sacramento, California 95814",
+      "location": "Sacramento, California",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "38.646976",
+        "longitude": "-121.519823"
+      }
+    },
+    {
+      "venue": "AT&T Center",
+      "team": "San Antonio Spurs",
+      "abbreviation": "SAS",
+      "capacity": "18418",
+      "opened": "2002",
+      "address": "1 AT&T Center Parkway, San Antonio, Texas 78219",
+      "location": "San Antonio, Texas",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "29.425165",
+        "longitude": "-98.434872"
+      }
+    },
+    {
+      "venue": "Scotiabank Arena",
+      "team": "Toronto Raptors",
+      "abbreviation": "TOR",
+      "capacity": "19800",
+      "opened": "1999",
+      "address": "40 Bay Street, Toronto, Ontario M5J2X2",
+      "location": "Toronto, Ontario",
+      "country": "Canada",
+      "coordinates": {
+        "latitude": "43.64337",
+        "longitude": "-79.37802"
+      }
+    },
+    {
+      "venue": "Vivint Smart Home Arena",
+      "team": "Utah Jazz",
+      "abbreviation": "UTA",
+      "capacity": "19911",
+      "opened": "1991",
+      "address": "301 South Temple, Salt Lake City, Utah 84101",
+      "location": "Salt Lake City, Utah",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "40.769248",
+        "longitude": "-111.899916"
+      }
+    },
+    {
+      "venue": "Capital One Arena",
+      "team": "Washington Wizards",
+      "abbreviation": "WAS",
+      "capacity": "20356",
+      "opened": "1997",
+      "address": "601 F Street Northwest, Washington, D.C. 20004",
+      "location": "Washington, D.C.",
+      "country": "USA",
+      "coordinates": {
+        "latitude": "38.89732",
+        "longitude": "-77.02165"
+      }
+    }
+  ]
+}
