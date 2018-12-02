@@ -26,6 +26,7 @@ export default new Vuex.Store({
       schedule: [],
     },
     league: null,
+    drawer: true,
   },
   getters: {
     teams: state => league => state[league].teams,
@@ -44,6 +45,9 @@ export default new Vuex.Store({
       state.nfl.schedule = [];
       state.nhl.schedule = [];
     },
+    setDrawer(state) {
+      state.drawer = !state.drawer;
+    }
   },
   actions: {
     /**

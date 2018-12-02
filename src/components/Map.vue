@@ -32,7 +32,7 @@ export default {
   },
   mounted() {
     this.map = new google.maps.Map(this.$refs.map, { // eslint-disable-line
-      zoom: 4,
+      zoom: 4.5,
       center: { lat: 39.39813, lng: -96.90886 },
     });
   },

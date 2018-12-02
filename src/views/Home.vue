@@ -1,29 +1,22 @@
 <template>
   <v-container fluid class="ma-0 pa-0">
-    <v-img :src="require('../assets/trophies.jpg')" :height="height">
-      <v-layout wrap row align-center>
-        <v-flex xs12 text-xs-center>
-          <Landing/>
-        </v-flex>
-        <v-flex xs10 offset-xs1 sm8 offset-sm2>
-          <v-card class="gMap-container">
-            <Map class="gMap"/>
-          </v-card>
-        </v-flex>
-      </v-layout>
-    </v-img>
+    <Filters/>
+    <Toolbar/>
+    <Map class="gMap"/>
   </v-container>
 </template>
 
 <script>
-import Landing from '../components/Landing.vue';
+import Filters from '../components/Filters.vue';
 import Map from '../components/Map.vue';
+import Toolbar from '../components/Toolbar.vue';
 
 export default {
   name: 'Home',
   components: {
-    Landing,
+    Filters,
     Map,
+    Toolbar,
   },
   data: () => ({
     height: '100vh',
@@ -32,11 +25,8 @@ export default {
 </script>
 
 <style>
-.gMap-container {
-  height: 75vh;
-}
 .gMap {
- height: 100%;
+ height: calc(100vh - 48px);
  width: 100%;
 }
 </style>
