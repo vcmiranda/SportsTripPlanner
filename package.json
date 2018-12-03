@@ -1,6 +1,8 @@
 {
   "name": "sports-trip-planner",
   "version": "1.0.0",
+  "author": "Vitor Miranda <vcmiranda@outlook.com>",
+  "description": "System for mapping out sports games",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
