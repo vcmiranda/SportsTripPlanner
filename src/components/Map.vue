@@ -46,8 +46,9 @@ export default {
     },
   },
   mounted() {
+    const { breakpoint: { width } } = this.$vuetify;
     this.map = new google.maps.Map(this.$refs.map, { // eslint-disable-line
-      zoom: 4.5,
+      zoom: width < 425 ? 3 : width < 600 ? 3.5 : width < 960 ? 4 : 4.5,
       center: { lat: 39.39813, lng: -96.90886 },
     });
   },
@@ -79,12 +80,12 @@ export default {
     },
   },
   watch: {
-    // mlb: {
-    //   handler() {
-    //     this.setMarkers();
-    //   },
-    //   deep: true,
-    // },
+    mlb: {
+      handler() {
+        this.setMarkers();
+      },
+      deep: true,
+    },
     nba: {
       handler(value) {
         this.manageMarkers(value);

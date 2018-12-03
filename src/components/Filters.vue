@@ -120,7 +120,7 @@ export default {
   name: 'Filters',
   data: () => ({
     leagues: [
-      // { code: 'mlb', label: 'MLB' },
+      { code: 'mlb', label: 'MLB' },
       { code: 'nba', label: 'NBA' },
       { code: 'nfl', label: 'NFL' },
       { code: 'nhl', label: 'NHL' },
@@ -154,6 +154,7 @@ export default {
       'setLeague',
       'setDialog',
       'setClear',
+      'setDrawer',
     ]),
     // Set league to be used, both locally and globally
     setLeagueSelected(value) {
@@ -179,7 +180,8 @@ export default {
       } else if (this.dateEndSelected) {
         dates = `until-${this.dateEndSelected.replace(/-/g, '')}`;
       }
-      this.$store.dispatch('getSchedule', { league: this.league, teams, dates });
+      this.$store.dispatch('getSchedule', { league: this.league, teams, dates })
+        .then(() => (this.setDrawer()));
     },
     // It saves date to the correct element
     saveDateStart(date) {

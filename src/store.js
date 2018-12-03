@@ -9,10 +9,10 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    // mlb: {
-    //   teams: [],
-    //   schedule: [],
-    // },
+    mlb: {
+      teams: [],
+      schedule: [],
+    },
     nba: {
       teams: [],
       schedule: [],
@@ -26,7 +26,7 @@ export default new Vuex.Store({
       schedule: [],
     },
     league: null,
-    drawer: true,
+    drawer: Vue.prototype.$vuetify.breakpoint.width > 960,
     loading: false,
     dialog: false,
     clear: false,
@@ -43,7 +43,7 @@ export default new Vuex.Store({
       state.league = value;
     },
     clearSchedule(state) {
-      // state.mlb.schedule = [];
+      state.mlb.schedule = [];
       state.nba.schedule = [];
       state.nfl.schedule = [];
       state.nhl.schedule = [];
