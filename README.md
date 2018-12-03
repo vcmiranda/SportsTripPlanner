@@ -1,6 +1,9 @@
 # SportsTripPlanner
 ###
 System for mapping out when and where games are going to be played. Games can be filtered by team(s), and dates. All filtered games must be displayed as pins on a map.
+Project demo is available at https://sportstripplanner.netlify.com/
+
+![Sports Trip Planner](https://github.com/vcmiranda/SportsTripPlanner/blob/assets/app.png?raw=true)
 
 ## Project setup
 ```
@@ -17,15 +20,7 @@ npm run serve
 npm run build
 ```
 
-### Run your tests
-```
-npm run test
-```
-
 ### Lints and fixes files
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
