@@ -14,6 +14,7 @@ module.exports = {
     'object-curly-newline': 0,
     'no-unused-expressions': 0,
     'no-loop-func': 0,
+    'no-nested-ternary': 0,
   },
   parserOptions: {
     parser: 'babel-eslint',
