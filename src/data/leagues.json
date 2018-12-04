@@ -1,0 +1,22 @@
+{
+  "mlb": {
+    "label": "MLB",
+    "startDate": "2018-03-29",
+    "endDate": "2018-10-01"
+  },
+  "nba": {
+    "label": "NBA",
+    "startDate": "2018-10-01",
+    "endDate": "2019-04-11"
+  },
+  "nfl": {
+    "label": "NFL",
+    "startDate": "2018-09-07",
+    "endDate": "2018-12-30"
+  },
+  "nhl": {
+    "label": "NHL",
+    "startDate": "2018-10-03",
+    "endDate": "2019-04-07"
+  }
+}
