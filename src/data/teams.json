@@ -1286,8 +1286,8 @@
       "opened": "1997",
       "address": "1600 Fedex Way, Landover, MD 20785",
       "location": "Landover, Maryland",
-      "latitude": "38.90773",
       "coordinates": {
+        "latitude": "38.90773",
         "longitude": "-76.864433"
       }
     }
