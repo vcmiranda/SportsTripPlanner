@@ -14,7 +14,7 @@
 
       <v-flex xs12 class="px-3">
         <v-select
-          :items="leagues"
+          :items="leaguesList"
           :value="leagueSelected"
           @input="setLeagueSelected"
           item-text="label"
@@ -69,8 +69,8 @@
           <v-date-picker
             ref="picker"
             v-model="dateStartSelected"
-            min="2018-08-01"
-            max="2019-07-31"
+            :min="league ? leagues[league].dates.startDate : 0"
+            :max="dateEndSelected || (league ? leagues[league].dates.endDate : 0)"
             @change="saveDateStart"
           ></v-date-picker>
         </v-menu>
@@ -97,8 +97,8 @@
           <v-date-picker
             ref="picker"
             v-model="dateEndSelected"
-            min="2018-08-01"
-            max="2019-07-31"
+            :min="dateStartSelected || (league ? leagues[league].dates.startDate : 0)"
+            :max="league ? leagues[league].dates.endDate : 0"
             @change="saveDateEnd"
           ></v-date-picker>
         </v-menu>
@@ -107,7 +107,7 @@
         <v-btn block color="orange darken-1" @click="getSchedule()" :disabled="!leagueSelected">Show Map</v-btn>
       </v-flex>
       <v-flex xs12 class="px-3">
-        <v-btn block color="orange darken-1" @click="setDialog(true)" :disabled="!leagueSelected">Clear</v-btn>
+        <v-btn block color="orange darken-1" @click="setDialog({ property: 'clearFilters', flag: true })" :disabled="!leagueSelected">Clear</v-btn>
       </v-flex>
     </v-layout>
   </v-navigation-drawer>
@@ -119,12 +119,6 @@ import { mapState, mapGetters, mapMutations } from 'vuex';
 export default {
   name: 'Filters',
   data: () => ({
-    leagues: [
-      { code: 'mlb', label: 'MLB' },
-      { code: 'nba', label: 'NBA' },
-      { code: 'nfl', label: 'NFL' },
-      { code: 'nhl', label: 'NHL' },
-    ],
     leagueSelected: null,
     teamsSelected: null,
     dateStartSelected: null,
@@ -137,9 +131,11 @@ export default {
       'drawer',
       'league',
       'clear',
+      'leagues',
     ]),
     ...mapGetters([
       'teams',
+      'schedule',
     ]),
     teamsList() {
       if (this.leagueSelected) {
@@ -147,14 +143,17 @@ export default {
       }
       return [];
     },
+    leaguesList() {
+      return Object.entries(this.leagues).map(league => ({ code: league[0], label: league[1].label }));
+    },
   },
   methods: {
     // Make mutations available in this component
     ...mapMutations([
       'setLeague',
       'setDialog',
-      'setClear',
-      'setDrawer',
+      'toggleClear',
+      'toggleDrawer',
     ]),
     // Set league to be used, both locally and globally
     setLeagueSelected(value) {
@@ -181,7 +180,12 @@ export default {
         dates = `until-${this.dateEndSelected.replace(/-/g, '')}`;
       }
       this.$store.dispatch('getSchedule', { league: this.league, teams, dates })
-        .then(() => (this.setDrawer()));
+        .then(() => {
+          this.toggleDrawer();
+          if (!this.schedule(this.league).length) {
+            this.setDialog({ property: 'noGames', flag: true });
+          }
+        });
     },
     // It saves date to the correct element
     saveDateStart(date) {
@@ -195,9 +199,14 @@ export default {
   watch: {
     // Every time user chooses a league, it calls an action to load teams list
     leagueSelected: {
-      handler(value) {
-        if (value) {
-          this.$store.dispatch('getTeams', value);
+      handler(newValue, oldValue) {
+        if (newValue && (newValue !== oldValue)) {
+          this.$store.dispatch('getTeams', newValue)
+            .then(() => {
+              this.teamsSelected = null;
+              this.dateStartSelected = null;
+              this.dateEndSelected = null;
+            });
         }
       },
       deep: true,
@@ -210,14 +219,14 @@ export default {
     menuEnd(value) {
       value && this.$nextTick(() => { this.$refs.picker.activePicker = 'MONTH'; });
     },
-    // Clear local variables if clear is true
+    // When clear flag changes, it checks whether became true, if it did clear local variables
     clear(value) {
       if (value) {
         this.leagueSelected = null;
         this.teamsSelected = null;
         this.dateStartSelected = null;
         this.dateEndSelected = null;
-        this.setClear();
+        this.toggleClear();
       }
     },
   },
