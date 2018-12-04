@@ -3,61 +3,94 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import leaguesAPI from './api/leagues';
 import teamsDB from './data/teams.json';
+import leaguesDB from './data/leagues.json';
 import helperGeneral from './helpers/general';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    mlb: {
-      teams: [],
-      schedule: [],
-    },
-    nba: {
-      teams: [],
-      schedule: [],
-    },
-    nfl: {
-      teams: [],
-      schedule: [],
-    },
-    nhl: {
-      teams: [],
-      schedule: [],
+    leagues: {
+      mlb: {
+        label: leaguesDB.mlb.label,
+        teams: [],
+        schedule: [],
+        dates: {
+          startDate: leaguesDB.mlb.startDate,
+          endDate: leaguesDB.mlb.endDate,
+        },
+      },
+      nba: {
+        label: leaguesDB.nba.label,
+        teams: [],
+        schedule: [],
+        dates: {
+          startDate: leaguesDB.nba.startDate,
+          endDate: leaguesDB.nba.endDate,
+        },
+      },
+      nfl: {
+        label: leaguesDB.nfl.label,
+        teams: [],
+        schedule: [],
+        dates: {
+          startDate: leaguesDB.nfl.startDate,
+          endDate: leaguesDB.nfl.endDate,
+        },
+      },
+      nhl: {
+        label: leaguesDB.nhl.label,
+        teams: [],
+        schedule: [],
+        dates: {
+          startDate: leaguesDB.nhl.startDate,
+          endDate: leaguesDB.nhl.endDate,
+        },
+      },
     },
     league: null,
     drawer: Vue.prototype.$vuetify.breakpoint.width > 960,
     loading: false,
-    dialog: false,
+    dialog: {
+      clearFilters: false,
+      noGames: false,
+    },
     clear: false,
   },
   getters: {
-    teams: state => league => state[league].teams,
-    schedule: state => league => state[league].schedule,
+    teams: state => league => state.leagues[league].teams,
+    schedule: state => league => state.leagues[league].schedule,
   },
   mutations: {
+    // Update teams or games of chosen league
     update(state, value) {
-      state[value.league][value.property] = value.data;
+      state.leagues[value.league][value.property] = value.data;
     },
+    // Set league to be used
     setLeague(state, value) {
       state.league = value;
     },
+    // Clear schedule of all leagues
     clearSchedule(state) {
-      state.mlb.schedule = [];
-      state.nba.schedule = [];
-      state.nfl.schedule = [];
-      state.nhl.schedule = [];
+      state.leagues.mlb.schedule = [];
+      state.leagues.nba.schedule = [];
+      state.leagues.nfl.schedule = [];
+      state.leagues.nhl.schedule = [];
     },
-    setDrawer(state) {
+    // Toggle navigation drawer status
+    toggleDrawer(state) {
       state.drawer = !state.drawer;
     },
+    // Set loading flag status
     setLoading(state, value) {
       state.loading = value;
     },
+    // Set chosen dialog box status
     setDialog(state, value) {
-      state.dialog = value;
+      state.dialog[value.property] = value.flag;
     },
-    setClear(state) {
+    // Toggle clear status
+    toggleClear(state) {
       state.clear = !state.clear;
     },
   },

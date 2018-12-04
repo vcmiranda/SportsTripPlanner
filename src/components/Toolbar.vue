@@ -1,7 +1,7 @@
 <template>
   <v-toolbar color="orange darken-1" dense clipped-left app>
     <v-toolbar-side-icon
-      @click="setDrawer"
+      @click="toggleDrawer"
       dark
     />
     <v-toolbar-title class="white--text">Sports Trip Planner</v-toolbar-title>
@@ -15,7 +15,7 @@ export default {
   name: 'Toolbar',
   methods: {
     ...mapMutations([
-      'setDrawer',
+      'toggleDrawer',
     ]),
   },
 };

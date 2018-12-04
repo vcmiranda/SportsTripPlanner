@@ -1,12 +1,12 @@
 <template>
-  <v-dialog v-model="dialog" persistent max-width="290">
+  <v-dialog v-model="dialog.clearFilters" persistent max-width="290">
     <v-card>
       <v-card-title class="headline orange darken-1 white--text">Clear Filters?</v-card-title>
-      <v-card-text>Are you sure you want to clear filters? This will remove all data from map.</v-card-text>
+      <v-card-text>Are you sure you want to clear filters? This will also remove all data from map.</v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="orange darken-1" flat @click="setDialog(false)">Disagree</v-btn>
-        <v-btn color="orange darken-1" flat @click="clear()">Agree</v-btn>
+        <v-btn color="orange darken-1" flat @click="setDialog({ property: 'clearFilters', flag: false })">No</v-btn>
+        <v-btn color="orange darken-1" flat @click="clear()">Yes</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -26,12 +26,13 @@ export default {
     ...mapMutations([
       'setDialog',
       'clearSchedule',
-      'setClear',
+      'toggleClear',
     ]),
+    // Clear all filters and data on map
     clear() {
       this.clearSchedule();
-      this.setClear();
-      this.setDialog(false);
+      this.toggleClear();
+      this.setDialog({ property: 'clearFilters', flag: false });
     },
   },
 };

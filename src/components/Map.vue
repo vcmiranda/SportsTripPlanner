@@ -11,16 +11,19 @@
       />
     </v-layout>
     <ClearFilters/>
+    <NoGames/>
   </v-container>
 </template>
 
 <script>
 import { mapState, mapGetters } from 'vuex';
 import ClearFilters from './dialogs/ClearFilters.vue';
+import NoGames from './dialogs/NoGames.vue';
 
 export default {
   components: {
     ClearFilters,
+    NoGames,
   },
   data: () => ({
     map: null,
@@ -30,10 +33,7 @@ export default {
     ...mapState([
       'loading',
       'league',
-      'mlb',
-      'nba',
-      'nfl',
-      'nhl',
+      'leagues',
     ]),
     ...mapGetters([
       'schedule',
@@ -80,27 +80,10 @@ export default {
     },
   },
   watch: {
-    mlb: {
-      handler() {
-        this.setMarkers();
-      },
-      deep: true,
-    },
-    nba: {
+    // Check whether schedule of any league changes, in case it does, set new markers or remove them.
+    leagues: {
       handler(value) {
-        this.manageMarkers(value);
-      },
-      deep: true,
-    },
-    nfl: {
-      handler(value) {
-        this.manageMarkers(value);
-      },
-      deep: true,
-    },
-    nhl: {
-      handler(value) {
-        this.manageMarkers(value);
+        this.manageMarkers(value[this.league]);
       },
       deep: true,
     },
