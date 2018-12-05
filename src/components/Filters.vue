@@ -6,9 +6,9 @@
     app
     dark
   >
-    <v-layout row wrap>
+    <v-layout row wrap class="py-2">
       <v-flex xs12>
-        <v-subheader class="justify-center title">Filters</v-subheader>
+        <v-subheader class="justify-center title">Options</v-subheader>
       </v-flex>
       <v-divider></v-divider>
 
@@ -22,6 +22,7 @@
           label="League"
           single-line
           color="primary"
+          :disabled="!leaguesList.length"
         />
       </v-flex>
 
@@ -69,10 +70,10 @@
           <v-date-picker
             ref="picker"
             v-model="dateStartSelected"
-            :min="league ? leagues[league].dates.startDate : 0"
-            :max="dateEndSelected || (league ? leagues[league].dates.endDate : 0)"
+            :min="league ? leaguesList.find(data => data.code === league).dates.startDate : nullDate"
+            :max="dateEndSelected || (league ? leaguesList.find(data => data.code === league).dates.endDate : nullDate)"
             @change="saveDateStart"
-          ></v-date-picker>
+          />
         </v-menu>
       </v-flex>
       <v-flex xs12 class="px-3">
@@ -97,10 +98,10 @@
           <v-date-picker
             ref="picker"
             v-model="dateEndSelected"
-            :min="dateStartSelected || (league ? leagues[league].dates.startDate : 0)"
-            :max="league ? leagues[league].dates.endDate : 0"
+            :min="dateStartSelected || (league ? leaguesList.find(data => data.code === league).dates.startDate : nullDate)"
+            :max="league ? leaguesList.find(data => data.code === league).dates.endDate : nullDate"
             @change="saveDateEnd"
-          ></v-date-picker>
+          />
         </v-menu>
       </v-flex>
       <v-flex xs12 class="px-3">
@@ -108,6 +109,23 @@
       </v-flex>
       <v-flex xs12 class="px-3">
         <v-btn block color="orange darken-1" @click="setDialog({ property: 'clearFilters', flag: true })" :disabled="!leagueSelected">Clear</v-btn>
+      </v-flex>
+    </v-layout>
+    <v-divider v-show="filtersList.length"/>
+    <v-layout row wrap v-if="filtersList.length" class="py-2">
+      <v-flex xs12>
+        <v-subheader class="justify-center title">Filters Applied</v-subheader>
+      </v-flex>
+      <v-divider/>
+      <v-flex xs12 class="px-3">
+        <template v-for="(filter, i) in filtersList">
+          <v-alert :value="filter.value" @input="updateFilter(filter)" color="primary" dismissible :key="i">
+            {{ filter.league.toUpperCase() }}<span v-if="filter.teams"> - Team(s): {{ filter.teams }}</span>
+          </v-alert>
+        </template>
+      </v-flex>
+      <v-flex xs12 class="px-3">
+        <v-btn block color="orange darken-1" @click="setDialog({ property: 'clearFilters', flag: true })" :disabled="!filtersList.length">Clear All Filters</v-btn>
       </v-flex>
     </v-layout>
   </v-navigation-drawer>
@@ -125,6 +143,7 @@ export default {
     dateEndSelected: null,
     menuStart: false,
     menuEnd: false,
+    nullDate: '0',
   }),
   computed: {
     ...mapState([
@@ -144,14 +163,35 @@ export default {
       return [];
     },
     leaguesList() {
-      return Object.entries(this.leagues).map(league => ({ code: league[0], label: league[1].label }));
+      this.tempLeagues = Object.assign({}, this.leagues); // eslint-disable-line
+      Object.values(this.leagues).forEach((league) => {
+        if (Object.keys(league.filter).length) {
+          delete this.tempLeagues[league.label.toLowerCase()];
+        }
+      });
+      return Object.entries(this.tempLeagues).map(league => ({
+        code: league[0],
+        label: league[1].label,
+        dates: {
+          startDate: league[1].dates.startDate,
+          endDate: league[1].dates.endDate,
+        },
+      }));
+    },
+    filtersList() {
+      return Object.values(this.leagues)
+        .map(league => league.filter)
+        .filter(league => Object.keys(league).length);
     },
   },
   methods: {
     // Make mutations available in this component
     ...mapMutations([
-      'setLeague',
+      'addFilter',
+      'removeFilter',
+      'removeFromSchedule',
       'setDialog',
+      'setLeague',
       'toggleClear',
       'toggleDrawer',
     ]),
@@ -162,8 +202,28 @@ export default {
     },
     // It builds team(s) and date(s) filters, then it calls action that's going to retrieve matches.
     getSchedule() {
+      const teams = this.filterTeams();
+      const dates = this.filterDates();
+      this.$store.dispatch('getSchedule', { league: this.league, teams, dates })
+        .then(() => {
+          this.addFilter({
+            league: this.leagueSelected,
+            data: {
+              league: this.leagueSelected,
+              value: true,
+              teams: this.teamsLabel(),
+            },
+          });
+          // this.toggleDrawer();
+          if (!this.schedule.length) {
+            this.setDialog({ property: 'noGames', flag: true });
+          }
+          this.clearData();
+        });
+    },
+    // Set team(s) to be used for filter
+    filterTeams() {
       let teams = '';
-      let dates = '';
       if (this.teamsSelected) {
         this.teamsSelected.forEach((team, i) => {
           teams += team;
@@ -172,20 +232,30 @@ export default {
           }
         });
       }
+      return teams;
+    },
+    // Set date(s) to be used for filter
+    filterDates() {
       if (this.dateStartSelected && this.dateEndSelected) {
-        dates = `from-${this.dateStartSelected.replace(/-/g, '')}-to-${this.dateEndSelected.replace(/-/g, '')}`;
-      } else if (this.dateStartSelected) {
-        dates = `since-${this.dateStartSelected.replace(/-/g, '')}`;
-      } else if (this.dateEndSelected) {
-        dates = `until-${this.dateEndSelected.replace(/-/g, '')}`;
+        return `from-${this.dateStartSelected.replace(/-/g, '')}-to-${this.dateEndSelected.replace(/-/g, '')}`;
       }
-      this.$store.dispatch('getSchedule', { league: this.league, teams, dates })
-        .then(() => {
-          this.toggleDrawer();
-          if (!this.schedule(this.league).length) {
-            this.setDialog({ property: 'noGames', flag: true });
-          }
-        });
+      if (this.dateStartSelected) {
+        return `since-${this.dateStartSelected.replace(/-/g, '')}`;
+      }
+      if (this.dateEndSelected) {
+        return `until-${this.dateEndSelected.replace(/-/g, '')}`;
+      }
+      return undefined;
+    },
+    // Return team(s) label
+    teamsLabel() {
+      if (!this.teamsSelected) {
+        return undefined;
+      }
+      if (this.teamsSelected.length === 1) {
+        return this.teamsSelected[0];
+      }
+      return `${this.teamsSelected[0]} + ${this.teamsSelected.length - 1} other(s)`;
     },
     // It saves date to the correct element
     saveDateStart(date) {
@@ -194,6 +264,19 @@ export default {
     // It saves date to the correct element
     saveDateEnd(date) {
       this.$refs.menuEnd.save(date);
+    },
+    // Update filter
+    updateFilter(value) {
+      this.removeFilter(value);
+      this.removeFromSchedule(value);
+    },
+    // Clear local variables
+    clearData() {
+      this.leagueSelected = null;
+      this.teamsSelected = null;
+      this.dateStartSelected = null;
+      this.dateEndSelected = null;
+      this.setLeague(null);
     },
   },
   watch: {
@@ -222,10 +305,7 @@ export default {
     // When clear flag changes, it checks whether became true, if it did clear local variables
     clear(value) {
       if (value) {
-        this.leagueSelected = null;
-        this.teamsSelected = null;
-        this.dateStartSelected = null;
-        this.dateEndSelected = null;
+        this.clearData();
         this.toggleClear();
       }
     },

@@ -39,8 +39,8 @@ export default {
       'schedule',
     ]),
     scheduleList() {
-      if (this.league) {
-        return this.schedule(this.league);
+      if (this.schedule.length) {
+        return this.schedule;
       }
       return [];
     },
@@ -70,20 +70,13 @@ export default {
       this.markers.forEach((marker) => { marker.setMap(null); });
       this.markers = [];
     },
-    // Select appropriate method to call depending on having or not information on schedule
-    manageMarkers(value) {
-      if (value.schedule.length) {
-        this.setMarkers();
-      } else {
-        this.deleteMarkers();
-      }
-    },
   },
   watch: {
     // Check whether schedule of any league changes, in case it does, set new markers or remove them.
-    leagues: {
-      handler(value) {
-        this.manageMarkers(value[this.league]);
+    schedule: {
+      handler() {
+        this.deleteMarkers();
+        this.setMarkers();
       },
       deep: true,
     },

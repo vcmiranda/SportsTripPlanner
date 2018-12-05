@@ -14,84 +14,99 @@ export default new Vuex.Store({
       mlb: {
         label: leaguesDB.mlb.label,
         teams: [],
-        schedule: [],
         dates: {
           startDate: leaguesDB.mlb.startDate,
           endDate: leaguesDB.mlb.endDate,
         },
+        filter: {},
       },
       nba: {
         label: leaguesDB.nba.label,
         teams: [],
-        schedule: [],
         dates: {
           startDate: leaguesDB.nba.startDate,
           endDate: leaguesDB.nba.endDate,
         },
+        filter: {},
       },
       nfl: {
         label: leaguesDB.nfl.label,
         teams: [],
-        schedule: [],
         dates: {
           startDate: leaguesDB.nfl.startDate,
           endDate: leaguesDB.nfl.endDate,
         },
+        filter: {},
       },
       nhl: {
         label: leaguesDB.nhl.label,
         teams: [],
-        schedule: [],
         dates: {
           startDate: leaguesDB.nhl.startDate,
           endDate: leaguesDB.nhl.endDate,
         },
+        filter: {},
       },
     },
+    schedule: [],
     league: null,
     drawer: Vue.prototype.$vuetify.breakpoint.width > 960,
     loading: false,
+    clear: false,
     dialog: {
       clearFilters: false,
       noGames: false,
     },
-    clear: false,
   },
   getters: {
     teams: state => league => state.leagues[league].teams,
-    schedule: state => league => state.leagues[league].schedule,
+    schedule: state => state.schedule,
   },
   mutations: {
-    // Update teams or games of chosen league
-    update(state, value) {
-      state.leagues[value.league][value.property] = value.data;
+    // Add filters
+    addFilter(state, value) {
+      Vue.set(state.leagues[value.league], 'filter', value.data);
     },
-    // Set league to be used
-    setLeague(state, value) {
-      state.league = value;
+    // Add games to the list
+    addToSchedule(state, value) {
+      state.schedule.push(...value);
     },
     // Clear schedule of all leagues
     clearSchedule(state) {
-      state.leagues.mlb.schedule = [];
-      state.leagues.nba.schedule = [];
-      state.leagues.nfl.schedule = [];
-      state.leagues.nhl.schedule = [];
+      Object.keys(state.leagues).map(league => Vue.set(state.leagues[league], 'filter', {}));
+      Vue.set(state, 'schedule', []);
     },
-    // Toggle navigation drawer status
-    toggleDrawer(state) {
-      state.drawer = !state.drawer;
+    // Remove filters
+    removeFilter(state, value) {
+      Vue.set(state.leagues[value.league], 'filter', {});
     },
-    // Set loading flag status
-    setLoading(state, value) {
-      state.loading = value;
+    // Add games to the list
+    removeFromSchedule(state, value) {
+      Vue.set(state, 'schedule', state.schedule.filter(game => game.league !== value.league));
     },
     // Set chosen dialog box status
     setDialog(state, value) {
       state.dialog[value.property] = value.flag;
     },
+    // Set league to be used
+    setLeague(state, value) {
+      Vue.set(state, 'league', value);
+    },
+    // Set loading flag status
+    setLoading(state, value) {
+      Vue.set(state, 'loading', value);
+    },
+    // Sets teams of chosen league
+    setTeams(state, value) {
+      state.leagues[value.league].teams = value.data;
+    },
     // Toggle clear status
     toggleClear(state) {
       state.clear = !state.clear;
+    },
+    // Toggle navigation drawer status
+    toggleDrawer(state) {
+      state.drawer = !state.drawer;
     },
   },
   actions: {
@@ -103,20 +118,11 @@ export default new Vuex.Store({
      */
     getTeams({ commit }, league) {
       const leagueData = localStorage.getItem(league);
-      const property = 'teams';
       if (!leagueData) {
-        localStorage.setItem(league, JSON.stringify({ [property]: teamsDB[league] }));
-        return commit('update', {
-          league,
-          property,
-          data: teamsDB[league],
-        });
+        localStorage.setItem(league, JSON.stringify({ teams: teamsDB[league] }));
+        return commit('setTeams', { league, data: teamsDB[league] });
       }
-      return commit('update', {
-        league,
-        property,
-        data: JSON.parse(leagueData).teams,
-      });
+      return commit('setTeams', { league, data: JSON.parse(leagueData).teams });
     },
     /**
      * @desc It calls function that fetches games from api and set state to make data
@@ -124,19 +130,14 @@ export default new Vuex.Store({
      * @param {string} league - League to be used (MLB, NBA, NFL, NHL)
      * @param {string} teams - Filter api call by team(s), when fetching games
      * @param {string} dates - Filter api call by date(s), when fetching games
-     * @returns {array} It sets state with filtered games.
+     * @returns {Promise<T | never>} It sets state with filtered games.
      */
     getSchedule({ commit }, { league, teams, dates }) {
       commit('setLoading', true);
-      commit('clearSchedule');
       return leaguesAPI.getSchedule(league, teams, dates)
         .then(({ data: { games } }) => {
           const data = games.map(game => helperGeneral.getGameData(game.schedule, league));
-          return commit('update', {
-            league,
-            property: 'schedule',
-            data,
-          });
+          return commit('addToSchedule', data);
         })
         .catch(err => err)
         .finally(() => commit('setLoading', false));
