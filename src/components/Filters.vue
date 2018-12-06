@@ -105,7 +105,7 @@
         </v-menu>
       </v-flex>
       <v-flex xs12 class="px-3">
-        <v-btn block color="orange darken-1" @click="getSchedule()" :disabled="!leagueSelected">Show Map</v-btn>
+        <v-btn block color="orange darken-1" @click="getSchedule()" :disabled="!leagueSelected">Add Filter</v-btn>
       </v-flex>
       <v-flex xs12 class="px-3">
         <v-btn block color="orange darken-1" @click="setDialog({ property: 'clearFilters', flag: true })" :disabled="!leagueSelected">Clear</v-btn>
