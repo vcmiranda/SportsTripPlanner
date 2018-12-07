@@ -1,3 +1,4 @@
+import moment from 'moment';
 import teamsDB from '../data/teams.json';
 
 export default {
@@ -13,7 +14,13 @@ export default {
     const awayTeam = teamsDB[league].find(row => row.abbreviation === game.awayTeam.abbreviation);
     return {
       league,
-      date: game.startTime,
+      dateTime: {
+        fullDate: moment(game.startTime).format('YYYY-MM-DD'),
+        year: moment(game.startTime).format('YYYY'),
+        month: moment(game.startTime).format('MMMM'),
+        day: moment(game.startTime).format('DD'),
+        time: moment(game.startTime).format('hh:mm A'),
+      },
       homeTeam: {
         abbreviation: game.homeTeam.abbreviation,
         name: homeTeam.team,
