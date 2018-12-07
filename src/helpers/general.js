@@ -1,3 +1,4 @@
+import moment from 'moment';
 import teamsDB from '../data/teams.json';
 
 export default {
@@ -9,27 +10,34 @@ export default {
    * (home and away teams, date of game, and general location information)
    */
   getGameData(game, league) {
-    const temp = {};
     const homeTeam = teamsDB[league].find(row => row.abbreviation === game.homeTeam.abbreviation);
     const awayTeam = teamsDB[league].find(row => row.abbreviation === game.awayTeam.abbreviation);
-    temp.date = game.startTime;
-    temp.homeTeam = {
-      abbreviation: game.homeTeam.abbreviation,
-      name: homeTeam.team,
+    return {
+      league,
+      dateTime: {
+        fullDate: moment(game.startTime).format('YYYY-MM-DD'),
+        year: moment(game.startTime).format('YYYY'),
+        month: moment(game.startTime).format('MMMM'),
+        day: moment(game.startTime).format('DD'),
+        time: moment(game.startTime).format('hh:mm A'),
+      },
+      homeTeam: {
+        abbreviation: game.homeTeam.abbreviation,
+        name: homeTeam.team,
+      },
+      awayTeam: {
+        abbreviation: game.awayTeam.abbreviation,
+        name: awayTeam.team,
+      },
+      location: {
+        venue: homeTeam.venue,
+        capacity: homeTeam.capacity,
+        opened: homeTeam.opened,
+        address: homeTeam.address,
+        location: homeTeam.location,
+        country: homeTeam.country,
+        coordinates: homeTeam.coordinates,
+      },
     };
-    temp.awayTeam = {
-      abbreviation: game.awayTeam.abbreviation,
-      name: awayTeam.team,
-    };
-    temp.location = {
-      venue: homeTeam.venue,
-      capacity: homeTeam.capacity,
-      opened: homeTeam.opened,
-      address: homeTeam.address,
-      location: homeTeam.location,
-      country: homeTeam.country,
-      coordinates: homeTeam.coordinates,
-    };
-    return temp;
   },
 };

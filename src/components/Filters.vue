@@ -1,14 +1,15 @@
 <template>
   <v-navigation-drawer
     :value="drawer"
+    :width="$vuetify.breakpoint.width < 600 ? $vuetify.breakpoint.width : 300"
     clipped
     stateless
     app
     dark
   >
-    <v-layout row wrap>
+    <v-layout row wrap class="py-2">
       <v-flex xs12>
-        <v-subheader class="justify-center title">Filters</v-subheader>
+        <v-subheader class="justify-center title">Options</v-subheader>
       </v-flex>
       <v-divider></v-divider>
 
@@ -22,6 +23,9 @@
           label="League"
           single-line
           color="primary"
+          :disabled="!leaguesList.length"
+          hide-details
+          dense
         />
       </v-flex>
 
@@ -35,6 +39,8 @@
           multiple
           single-line
           :disabled="!leagueSelected"
+          hide-details
+          dense
         >
           <template slot="selection" slot-scope="{ item, index }">
           <span v-if="index === 0">
@@ -62,17 +68,18 @@
         >
           <v-text-field
             slot="activator"
-            v-model="dateStartSelected"
+            v-model="startDateSelected"
             label="Start Date"
             readonly
-          ></v-text-field>
+            hide-details
+          />
           <v-date-picker
             ref="picker"
-            v-model="dateStartSelected"
-            :min="league ? leagues[league].dates.startDate : 0"
-            :max="dateEndSelected || (league ? leagues[league].dates.endDate : 0)"
+            v-model="startDateSelected"
+            :min="league ? leaguesList.find(data => data.code === league).dates.startDate : nullDate"
+            :max="endDateSelected || (league ? leaguesList.find(data => data.code === league).dates.endDate : nullDate)"
             @change="saveDateStart"
-          ></v-date-picker>
+          />
         </v-menu>
       </v-flex>
       <v-flex xs12 class="px-3">
@@ -90,30 +97,79 @@
         >
           <v-text-field
             slot="activator"
-            v-model="dateEndSelected"
+            v-model="endDateSelected"
             label="End Date"
             readonly
-          ></v-text-field>
+            hide-details
+          />
           <v-date-picker
             ref="picker"
-            v-model="dateEndSelected"
-            :min="dateStartSelected || (league ? leagues[league].dates.startDate : 0)"
-            :max="league ? leagues[league].dates.endDate : 0"
+            v-model="endDateSelected"
+            :min="startDateSelected || (league ? leaguesList.find(data => data.code === league).dates.startDate : nullDate)"
+            :max="league ? leaguesList.find(data => data.code === league).dates.endDate : nullDate"
             @change="saveDateEnd"
-          ></v-date-picker>
+          />
         </v-menu>
       </v-flex>
+    </v-layout>
+    <v-layout row wrap class="py-2" v-if="leaguesList.length < 4 && (tempStartDateSelected || tempEndDateSelected)">
       <v-flex xs12 class="px-3">
-        <v-btn block color="orange darken-1" @click="getSchedule()" :disabled="!leagueSelected">Show Map</v-btn>
+        <v-checkbox
+          label="Use dates set before?"
+          v-model="datesCheckbox"
+          color="orange darken-1"
+          class="customClass"
+          hide-details
+        />
+      </v-flex>
+    </v-layout>
+    <v-layout row wrap class="py-2">
+      <v-flex xs12 class="px-3">
+        <v-btn block color="orange darken-1" @click="getSchedule()" :disabled="!leagueSelected">Add Filter</v-btn>
       </v-flex>
       <v-flex xs12 class="px-3">
-        <v-btn block color="orange darken-1" @click="setDialog({ property: 'clearFilters', flag: true })" :disabled="!leagueSelected">Clear</v-btn>
+        <v-btn block color="orange darken-1" @click="clearVariables()" :disabled="!leagueSelected">Clear</v-btn>
+      </v-flex>
+    </v-layout>
+    <v-divider v-show="filtersList.length"/>
+    <v-layout row wrap v-if="filtersList.length" class="py-2">
+      <v-flex xs12>
+        <v-subheader class="justify-center title">Filters Applied</v-subheader>
+      </v-flex>
+      <v-divider/>
+      <v-flex xs12 class="px-3" v-for="(filter, i) in filtersList" :key="i">
+        <v-card v-if="filter.value" @click="updateFilter(filter)" color="primary" class="px-3 py-2 my-1 caption">
+          <v-layout row wrap align-center>
+            <v-flex xs10>
+              <v-layout row wrap>
+                <v-flex xs10>
+                  {{ filter.league.toUpperCase() }}<span v-if="filter.teams"> - Team(s): {{ filter.teams }}</span>
+                </v-flex>
+                <v-flex xs10 v-if="filter.dates.startDate || filter.dates.endDate">
+                  {{ formatDates(filter.dates.startDate, filter.dates.endDate) }}
+                </v-flex>
+              </v-layout>
+            </v-flex>
+            <v-flex xs2>
+              <v-tooltip bottom>
+                <v-btn icon @click="updateFilter(filter)" slot="activator">
+                  <v-icon>clear</v-icon>
+                </v-btn>
+                <span>Remove this filter</span>
+              </v-tooltip>
+            </v-flex>
+          </v-layout>
+        </v-card>
+      </v-flex>
+      <v-flex xs12 class="px-3">
+        <v-btn block color="orange darken-1" @click="setDialog({ property: 'clearFilters', flag: true })" :disabled="!filtersList.length">Clear All Filters</v-btn>
       </v-flex>
     </v-layout>
   </v-navigation-drawer>
 </template>
 
 <script>
+import moment from 'moment';
 import { mapState, mapGetters, mapMutations } from 'vuex';
 
 export default {
@@ -121,10 +177,15 @@ export default {
   data: () => ({
     leagueSelected: null,
     teamsSelected: null,
-    dateStartSelected: null,
-    dateEndSelected: null,
+    startDateSelected: null,
+    tempStartDateSelected: null,
+    endDateSelected: null,
+    tempEndDateSelected: null,
     menuStart: false,
     menuEnd: false,
+    nullDate: '0',
+    leaguesCheckbox: false,
+    datesCheckbox: false,
   }),
   computed: {
     ...mapState([
@@ -144,14 +205,35 @@ export default {
       return [];
     },
     leaguesList() {
-      return Object.entries(this.leagues).map(league => ({ code: league[0], label: league[1].label }));
+      this.tempLeagues = Object.assign({}, this.leagues); // eslint-disable-line
+      Object.values(this.leagues).forEach((league) => {
+        if (Object.keys(league.filter).length) {
+          delete this.tempLeagues[league.label.toLowerCase()];
+        }
+      });
+      return Object.entries(this.tempLeagues).map(league => ({
+        code: league[0],
+        label: league[1].label,
+        dates: {
+          startDate: league[1].dates.startDate,
+          endDate: league[1].dates.endDate,
+        },
+      }));
+    },
+    filtersList() {
+      return Object.values(this.leagues)
+        .map(league => league.filter)
+        .filter(league => Object.keys(league).length);
     },
   },
   methods: {
     // Make mutations available in this component
     ...mapMutations([
-      'setLeague',
+      'addFilter',
+      'removeFilter',
+      'removeFromSchedule',
       'setDialog',
+      'setLeague',
       'toggleClear',
       'toggleDrawer',
     ]),
@@ -162,8 +244,35 @@ export default {
     },
     // It builds team(s) and date(s) filters, then it calls action that's going to retrieve matches.
     getSchedule() {
+      const teams = this.filterTeams();
+      const dates = this.filterDates();
+      this.$store.dispatch('getSchedule', { league: this.league, teams, dates })
+        .then(() => {
+          this.addFilter({
+            league: this.leagueSelected,
+            data: {
+              league: this.leagueSelected,
+              value: true,
+              teams: this.teamsLabel(),
+              dates: {
+                startDate: this.startDateSelected,
+                endDate: this.endDateSelected,
+              },
+            },
+          });
+          if (this.$vuetify.breakpoint.width < 600) {
+            this.toggleDrawer();
+          }
+          if (!this.schedule.length) {
+            this.setDialog({ property: 'noGames', flag: true });
+          }
+          this.saveTempDates();
+          this.clearVariables();
+        });
+    },
+    // Set team(s) to be used for filter
+    filterTeams() {
       let teams = '';
-      let dates = '';
       if (this.teamsSelected) {
         this.teamsSelected.forEach((team, i) => {
           teams += team;
@@ -172,20 +281,30 @@ export default {
           }
         });
       }
-      if (this.dateStartSelected && this.dateEndSelected) {
-        dates = `from-${this.dateStartSelected.replace(/-/g, '')}-to-${this.dateEndSelected.replace(/-/g, '')}`;
-      } else if (this.dateStartSelected) {
-        dates = `since-${this.dateStartSelected.replace(/-/g, '')}`;
-      } else if (this.dateEndSelected) {
-        dates = `until-${this.dateEndSelected.replace(/-/g, '')}`;
+      return teams;
+    },
+    // Set date(s) to be used for filter
+    filterDates() {
+      if (this.startDateSelected && this.endDateSelected) {
+        return `from-${this.startDateSelected.replace(/-/g, '')}-to-${this.endDateSelected.replace(/-/g, '')}`;
       }
-      this.$store.dispatch('getSchedule', { league: this.league, teams, dates })
-        .then(() => {
-          this.toggleDrawer();
-          if (!this.schedule(this.league).length) {
-            this.setDialog({ property: 'noGames', flag: true });
-          }
-        });
+      if (this.startDateSelected) {
+        return `since-${this.startDateSelected.replace(/-/g, '')}`;
+      }
+      if (this.endDateSelected) {
+        return `until-${this.endDateSelected.replace(/-/g, '')}`;
+      }
+      return undefined;
+    },
+    // Return team(s) label
+    teamsLabel() {
+      if (!this.teamsSelected) {
+        return undefined;
+      }
+      if (this.teamsSelected.length === 1) {
+        return this.teamsSelected[0];
+      }
+      return `${this.teamsSelected[0]} + ${this.teamsSelected.length - 1} other(s)`;
     },
     // It saves date to the correct element
     saveDateStart(date) {
@@ -194,6 +313,45 @@ export default {
     // It saves date to the correct element
     saveDateEnd(date) {
       this.$refs.menuEnd.save(date);
+    },
+    // Update filter
+    updateFilter(value) {
+      this.removeFilter(value);
+      this.removeFromSchedule(value);
+    },
+    // Clear local variables
+    clearVariables() {
+      this.leagueSelected = null;
+      this.teamsSelected = null;
+      this.datesCheckbox = false;
+      this.setLeague(null);
+      this.clearDates();
+    },
+    // Save current dates
+    saveDates() {
+      this.startDateSelected = this.tempStartDateSelected;
+      this.endDateSelected = this.tempEndDateSelected;
+    },
+    // Save temp dates
+    saveTempDates() {
+      this.tempStartDateSelected = this.startDateSelected;
+      this.tempEndDateSelected = this.endDateSelected;
+    },
+    // Clear temp dates
+    clearDates() {
+      this.startDateSelected = null;
+      this.endDateSelected = null;
+    },
+    // Format dates to show on filters
+    formatDates(start, end) {
+      if (start && end) {
+        return `${moment(start, 'YYYY-MM-DD').format('MMM DD, YYYY')} -
+          ${moment(end, 'YYYY-MM-DD').format('MMM DD, YYYY')}`;
+      }
+      if (start) {
+        return `${moment(start, 'YYYY-MM-DD').format('MMM DD, YYYY')}`;
+      }
+      return `${moment(end, 'YYYY-MM-DD').format('MMM DD, YYYY')}`;
     },
   },
   watch: {
@@ -204,8 +362,8 @@ export default {
           this.$store.dispatch('getTeams', newValue)
             .then(() => {
               this.teamsSelected = null;
-              this.dateStartSelected = null;
-              this.dateEndSelected = null;
+              this.startDateSelected = null;
+              this.endDateSelected = null;
             });
         }
       },
@@ -222,11 +380,17 @@ export default {
     // When clear flag changes, it checks whether became true, if it did clear local variables
     clear(value) {
       if (value) {
-        this.leagueSelected = null;
-        this.teamsSelected = null;
-        this.dateStartSelected = null;
-        this.dateEndSelected = null;
+        this.clearVariables();
         this.toggleClear();
+      }
+    },
+    // When dates checkbox changes, it sets start and end date (add or remove)
+    datesCheckbox(value) {
+      if (value) {
+        this.saveDates();
+      } else {
+        this.saveTempDates();
+        this.clearDates();
       }
     },
   },
@@ -234,5 +398,7 @@ export default {
 </script>
 
 <style>
-
+.customClass label {
+  font-size: 12px !important;
+}
 </style>
