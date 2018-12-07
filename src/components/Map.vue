@@ -17,11 +17,10 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex';
-import moment from 'moment';
 import ClearFilters from './dialogs/ClearFilters.vue';
 import NoGames from './dialogs/NoGames.vue';
 
-const infowindow = new google.maps.InfoWindow();
+const infowindow = new google.maps.InfoWindow(); // eslint-disable-line
 
 export default {
   components: {
@@ -47,8 +46,8 @@ export default {
         const list = this.schedule;
         const byVenue = {};
         list.forEach((game) => {
-          const venue = Object.keys(byVenue).find(venue => venue === game.location.venue);
-          if (!venue) {
+          const location = Object.keys(byVenue).find(venue => venue === game.location.venue);
+          if (!location) {
             byVenue[game.location.venue] = [];
           }
           byVenue[game.location.venue].push(game);
@@ -82,7 +81,7 @@ export default {
     },
     // Add info window features to each marker used
     addInfoWindow(message, marker) {
-      marker.addListener('click', function() {
+      marker.addListener('click', () => {
         if (this.lastWindow) {
           this.lastWindow.close();
         }
@@ -98,10 +97,22 @@ export default {
     },
     // Set message on info window
     setMInfoWindowMessage(game) {
-      let message = `<div>Vanue: ${game.location.venue}</div><br/>`;
+      const general = {};
+      let message = `<div class="d-flex justify-center my-2 font-weight-bold">Vanue: ${game.location.venue}</div>`;
       game.games.forEach((data) => {
-        const date = moment(data.date).format('YYYY-MM-DD');
-        message += `<div>${date} - ${data.awayTeam.name} x ${data.homeTeam.name}</div><br/>`
+        if (!Object.keys(general).find(current => current === data.league)) {
+          message += `<div class="text-xs-center font-weight-bold pt-3 pb-2">${data.league.toUpperCase()}</div>`;
+          general[data.league] = {};
+        }
+        if (!Object.keys(general[data.league]).find(current => current === data.dateTime.year)) {
+          message += `<div class="font-weight-bold py-1">${data.dateTime.year}</div>`;
+          general[data.league][data.dateTime.year] = [];
+        }
+        if (!general[data.league][data.dateTime.year].find(current => current === data.dateTime.month)) {
+          message += `<div class="font-weight-medium py-1" @click="test">${data.dateTime.month}</div>`;
+          general[data.league][data.dateTime.year].push(data.dateTime.month);
+        }
+        message += `<div><span class="font-weight-medium">${data.dateTime.day}</span> - ${data.awayTeam.name} x ${data.homeTeam.name} - <span class="font-weight-medium">${data.dateTime.time}</span></div>`;
       });
       return message;
     },
