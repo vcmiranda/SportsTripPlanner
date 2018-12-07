@@ -362,8 +362,6 @@ export default {
           this.$store.dispatch('getTeams', newValue)
             .then(() => {
               this.teamsSelected = null;
-              this.startDateSelected = null;
-              this.endDateSelected = null;
             });
         }
       },
